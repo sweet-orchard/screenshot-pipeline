@@ -42,5 +42,5 @@ jobs:
           git add screenshots/new_homepage.png
 
           # Only commit if there are actual changes
-          git diff --cached --quiet || git commit -m "Update homepage screenshot"
+          git diff --cached --quiet || git commit -m "Update homepage screenshot [skip ci]"
           git push
