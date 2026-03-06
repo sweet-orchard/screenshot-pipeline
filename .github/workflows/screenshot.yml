@@ -20,6 +20,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Install Chrome for Puppeteer
+        run: npx puppeteer browsers install chrome
+        # GitHub runners don't have Chrome pre-installed — this downloads it
+
       - name: Start Server
         run: npm start &
         # The & runs the server in the background so the workflow can continue
