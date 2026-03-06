@@ -1,3 +1,42 @@
-git add .
-git commit -m "add workflow"
-git push
+name: Screenshot Pipeline
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Start Server
+        run: npm start &
+        # The & runs the server in the background so the workflow can continue
+
+      - name: Wait For Server
+        run: npx wait-on http://localhost:3000
+        # Waits until the server is actually ready before continuing
+
+      - name: Take Screenshot
+        run: node scripts/screenshot.js
+
+      - name: Commit Updated Screenshot
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add screenshots/new_homepage.png
+
+          # Only commit if there are actual changes
+          git diff --cached --quiet || git commit -m "Update homepage screenshot"
+          git push
