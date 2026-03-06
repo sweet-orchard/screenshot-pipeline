@@ -13,10 +13,26 @@ html, body {
 .perfect-center {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 900;
-    font-size: 3rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
     height: 100vh;
     width: 100vw;
 }
+
+h3 {
+    font-size: 2rem;
+}
+
+p {
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.bigger-text {
+    font-size: 8rem;
+}
+
+    
