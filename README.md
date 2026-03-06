@@ -1,3 +1,3 @@
 ## Homepage Preview
 
-![Homepage Screenshot](screenshots/new_homepage.png?v=2)
+![Homepage Screenshot](https://raw.githubusercontent.com/sweet-orchard/screenshot-pipeline/main/screenshots/new_homepage.png)
